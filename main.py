@@ -10,6 +10,8 @@ import time
 from multiprocessing import Process, Value
 
 app = Flask(__name__)
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 # celery = Celery(app.name)
 
 pin_DHT11 = 18
@@ -19,16 +21,17 @@ cooler = 13
 heater = 19
 
 DHT11 = Adafruit_DHT.DHT11
-pwm = GPIO.PWM(pin_buzzer, 0)
+GPIO.setup(pin_buzzer, GPIO.OUT)
+pwm = GPIO.PWM(pin_buzzer, 10)
 
 # Setup GPIO
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
+GPIO.setup(pin_gaz, GPIO.IN)
 GPIO.setup(cooler, GPIO.OUT)
 GPIO.setup(heater, GPIO.OUT)
-GPIO.OUTPUT(cooler, GPIO.LOW)
-GPIO.OUTPUT(heater, GPIO.LOW)
+
+# Make it low
+GPIO.output(cooler, GPIO.LOW)
+GPIO.output(heater, GPIO.LOW)
 
 
 # Main Route
@@ -36,28 +39,24 @@ GPIO.OUTPUT(heater, GPIO.LOW)
 def main():
     # Read humidity and temperature values from sensor
     humidity, temperature = Adafruit_DHT.read_retry(DHT11, pin_DHT11)
+    cooler_sts = GPIO.input(cooler)
+    heater_sts = GPIO.input(heater)
+    gaz_sts = GPIO.input(pin_gaz)
+    buzzer_sts = GPIO.input(pin_buzzer)
     template_data = {
         'temperature': temperature,
-        'humidity': humidity
+        'humidity': humidity,
+        'cooler': cooler_sts,
+        'heater': heater_sts,
+        'gaz': gaz_sts,
+        'buzzer': buzzer_sts,
     }
+    command_action()
     return render_template('main.html', **template_data)
 
 
 # Manually control the heater and the cooler
-@app.route("/<deviceName>/<action>")
-def action(deviceName, action):
-    # Get device name
-    if deviceName == 'cooler':
-        pointer = cooler
-    if deviceName == 'heater':
-        pointer = heater
-
-    # Turn device on or off
-    if action == "on":
-        GPIO.output(pointer, GPIO.HIGH)
-    if action == "off":
-        GPIO.output(pointer, GPIO.LOW)
-
+def action():
     # Status of the device
     cooler_sts = GPIO.input(cooler)
     heater_sts = GPIO.input(heater)
@@ -70,7 +69,6 @@ def action(deviceName, action):
         'gaz': gaz_sts,
         'buzzer': buzzer_sts,
     }
-    return render_template('main.html', **template_data)
 
 
 def command_action():
@@ -78,9 +76,9 @@ def command_action():
     if humidity is not None and temperature is not None:
         if temperature < 15 or humidity > 60:
             GPIO.output(cooler, GPIO.LOW)
-            GPIO.OUTPUT(heater, GPIO.HIGH)
+            GPIO.output(heater, GPIO.HIGH)
         elif temperature > 28 or humidity < 20:
-            GPIO.OUTPUT(cooler, GPIO.HIGH)
+            GPIO.output(cooler, GPIO.HIGH)
             GPIO.output(heater, GPIO.LOW)
         else:
             GPIO.output(cooler, GPIO.LOW)
@@ -117,14 +115,14 @@ def loop_gaz():
 
 
 if __name__ == "__main__":
-    recording_on = Value('b', True)
+    #recording_on = Value('b', True)
 
-    p_action = Process(target=command_action(), args=(recording_on,))
-    p_action.start()
+    #p_action = Process(target=command_action(), args=(recording_on,))
+    #p_action.start()
 
-    p_gaz = Process(target=loop_gaz(), args=(recording_on,))
-    p_gaz.start()
+    #p_gaz = Process(target=loop_gaz(), args=(recording_on,))
+    #p_gaz.start()
 
-    app.run(host='0.0.0.0', port=3000, debug=True, use_reloader=False)
-    p_action.join()
-    p_gaz.join()
+    app.run(host='0.0.0.0', port=3000, debug=True)
+    #p_action.join()
+    #p_gaz.join()
