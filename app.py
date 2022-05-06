@@ -78,7 +78,7 @@ def chart_data():
             # Return each json data, read more:
             # https://www.tutorialsteacher.com/python/python-generator)
             yield f"data:{json_data}\n\n"
-            time.sleep(1)   # Waiting to not clutter the output
+            time.sleep(3)   # Waiting to not clutter the output
 
     # More about streaming content:
     # https://flask.palletsprojects.com/en/1.1.x/patterns/streaming/#streaming-with-context
