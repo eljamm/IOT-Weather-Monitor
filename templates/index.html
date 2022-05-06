@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Smart Home</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"
+      rel="stylesheet"
+    />
+    <link href="{{ url_for('static', filename='leds.css')}}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="header">
+      <p>Smart Home Manager</p>
+    </div>
+    <div class="master-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <canvas
+                  height="100px"
+                  width="aspectRatio"
+                  id="chart"
+                  style="padding: 20px"
+                ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gauge-container">
+        <div class="gauge-box">
+          <canvas id="temp" class="gauge" style="width: 300px"></canvas>
+          <p>Temperature</p>
+          <div id="preview-temp"></div>
+        </div>
+        <div class="gauge-box">
+          <canvas id="hum" class="gauge" style="width: 300px"></canvas>
+          <p>Humidity</p>
+          <div id="preview-humid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="led-container">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div class="led-box">
+          <div class="led-yellow-inactive" id="led-yellow"></div>
+          <p>Gaz Sensor</p>
+        </div>
+        <div class="led-box">
+          <div class="led-red-inactive" id="led-red"></div>
+          <p>Heater</p>
+        </div>
+        <div class="led-box">
+          <div class="led-blue-inactive" id="led-blue"></div>
+          <p>Cooler</p>
+        </div>
+      </div>
+    </div>
+
+    <!--suppress JSUnresolvedLibraryURL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!--suppress JSUnresolvedLibraryURL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--suppress JSUnresolvedLibraryURL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="{{ url_for('static', filename='gauge.js')}}"></script>
+    <script src="{{ url_for('static', filename='chart.setup.js')}}"></script>
+
+    <div class="footnote">
+      <p>Fedi Jamoussi & Chaima Haddada 2021-2022</p>
+    </div>
+  </body>
+</html>

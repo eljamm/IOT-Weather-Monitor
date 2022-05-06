@@ -1,0 +1,219 @@
+.master-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gauge-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.gauge-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.gauge-box p {
+  font-style: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.led-container {
+	background-size: cover;
+  background: rgb(226,226,226); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226,226,226,1)), color-stop(50%,rgba(219,219,219,1)), color-stop(51%,rgba(209,209,209,1)), color-stop(100%,rgba(254,254,254,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+  padding: 20px;
+}
+
+.led-box {
+  height: 30px;
+  width: 25%;
+  margin: 10px 0;
+  float: left;
+}
+
+.led-box p {
+  font-size: 16px;
+  text-align: center;
+  margin: 1em;
+}
+
+.led-red-active {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #F00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+  -webkit-animation: blinkRed 0.5s infinite;
+  -moz-animation: blinkRed 0.5s infinite;
+  -ms-animation: blinkRed 0.5s infinite;
+  -o-animation: blinkRed 0.5s infinite;
+  animation: blinkRed 0.5s infinite;
+}
+
+.led-red-inactive {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #A00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+}
+
+@-webkit-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #6d2323 0 -1px 9px, #F00 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-moz-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #6d2323 0 -1px 9px, #F00 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-ms-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #6d2323 0 -1px 9px, #F00 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-o-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #6d2323 0 -1px 9px, #F00 0 2px 0;}
+    to { background-color: #F00; }
+}
+@keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #6d2323 0 -1px 9px, #F00 0 2px 0;}
+    to { background-color: #F00; }
+}
+
+.led-yellow-active {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #FF0;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+  -webkit-animation: blinkYellow 1s infinite;
+  -moz-animation: blinkYellow 1s infinite;
+  -ms-animation: blinkYellow 1s infinite;
+  -o-animation: blinkYellow 1s infinite;
+  animation: blinkYellow 1s infinite;
+}
+
+.led-yellow-inactive {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #AA0;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+}
+
+@-webkit-keyframes blinkYellow {
+    from { background-color: #FF0; }
+    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
+    to { background-color: #FF0; }
+}
+@-moz-keyframes blinkYellow {
+    from { background-color: #FF0; }
+    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
+    to { background-color: #FF0; }
+}
+@-ms-keyframes blinkYellow {
+    from { background-color: #FF0; }
+    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
+    to { background-color: #FF0; }
+}
+@-o-keyframes blinkYellow {
+    from { background-color: #FF0; }
+    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
+    to { background-color: #FF0; }
+}
+@keyframes blinkYellow {
+    from { background-color: #FF0; }
+    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
+    to { background-color: #FF0; }
+}
+
+.led-blue-active {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #24E0FF;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #24E0FF 0 2px 14px;
+  -webkit-animation: blinkBlue 1s infinite;
+  -moz-animation: blinkBlue 1s infinite;
+  -ms-animation: blinkBlue 1s infinite;
+  -o-animation: blinkBlue 1s infinite;
+  animation: blinkBlue 1s infinite;
+}
+
+.led-blue-inactive {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #006;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #24E0FF 0 2px 14px;
+}
+
+@-webkit-keyframes blinkBlue {
+  from { background-color: #24E0FF; }
+  50% { background-color: #006; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #026780 0 -1px 9px, #24E0FF 0 2px 0; }
+  to { background-color: #24E0FF; }
+}
+@-moz-keyframes blinkBlue {
+  from { background-color: #24E0FF; }
+  50% { background-color: #006; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #026780 0 -1px 9px, #24E0FF 0 2px 0; }
+  to { background-color: #24E0FF; }
+}
+@-ms-keyframes blinkBlue {
+  from { background-color: #24E0FF; }
+  50% { background-color: #006; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #026780 0 -1px 9px, #24E0FF 0 2px 0; }
+  to { background-color: #24E0FF; }
+}
+@-o-keyframes blinkBlue {
+  from { background-color: #24E0FF; }
+  50% { background-color: #006; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #026780 0 -1px 9px, #24E0FF 0 2px 0; }
+  to { background-color: #24E0FF; }
+}
+@keyframes blinkBlue {
+  from { background-color: #24E0FF; }
+  50% { background-color: #006; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #026780 0 -1px 9px, #24E0FF 0 2px 0; }
+  to { background-color: #24E0FF; }
+}
+
+.header {
+  font-size: 48px;
+  text-align: center;
+  margin: 1em;
+  display: flex;
+  justify-content: center;
+  font-style: bold;
+}
+
+.footnote {
+  font-size: 12px;
+  text-align: center;
+  margin: 1em;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 0 0;
+}
